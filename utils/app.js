@@ -24,14 +24,26 @@ class imageManager{
 
             let author = document.createElement("h3");
             author.innerHTML = image_data.author;
+
             let like = document.createElement("span");
             like.setAttribute("class", "material-icons");
             like.innerText = "loyalty";
+            like.setAttribute("onclick", "imgClick(event)");
+
+
+            let download = document.createElement("a");
+            download.setAttribute("href", image_data.download_url);
+            download.setAttribute("download", "img.jpg");
+            download.setAttribute("target", "_blank");
+            download.setAttribute("class", "material-icons");
+            download.innerText = "get_app";
+
             let num_likes = document.createElement("p");
             num_likes.innerHTML = Math.floor(Math.random() * 99);
 
             divContainer.appendChild(author);
             divContainer.appendChild(like);
+            divContainer.appendChild(download);
             divContainer.appendChild(num_likes);
 
 
@@ -95,6 +107,7 @@ function imgClick(event){
     let likeDiv = document.createElement("div");
     likeDiv.setAttribute("class", "like-container");
     likeDiv.appendChild(like);
+
     
     parent.appendChild(likeDiv);
     setTimeout(()=>{
